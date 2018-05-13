@@ -23,7 +23,6 @@ class Mob {
         fill("red");
         rect(this.body.x - x_off, this.body.y - y_off, this.body.width, this.body.height);
     }else {
-        console.log(thinking);
         thinking.position(this.body.x - x_off, this.body.y - y_off, this.body.width, this.body.height);
         thinking.size(this.body.width, this.body.height);
         
@@ -41,7 +40,7 @@ class Mob {
   		if(Rect.collision(this.body.rect, player.body.rect)){
   			player.hurt();
   		}
-  	})
+  	});
   }
 
 }
