@@ -1,5 +1,5 @@
 class Mob {
-  constructor(x, y, width, height, g, sprite, faction, health, v, ai) {
+  constructor(x, y, width, height, g, sprite, faction, health, v, ai, request_sprite) {
     this.body = new Body(x, y, width, height, g);
     this.sprite = sprite
     this.faction = faction
@@ -7,6 +7,9 @@ class Mob {
     this.max_health = health;
     this.v = v;
     this.ai = ai;
+    // The way loading image assets works with p5 makes it virtually impossible to load animated sprites directly into the constructor. 
+    // Hence the use of this pseudo-callback function called in render()
+    this.request_sprite =request_sprite;
   }
 
   // Handles logic
@@ -19,12 +22,13 @@ class Mob {
   render(x_off, y_off){
     // Fallback on no sprite
     // console.log(thinking)
-    if(thinking == undefined) {
+    if(this.sprite == undefined || this.sprite.position == undefined) {
         fill("red");
         rect(this.body.x - x_off, this.body.y - y_off, this.body.width, this.body.height);
+        this.sprite = this.request_sprite();
     }else {
-        thinking.position(this.body.x - x_off, this.body.y - y_off, this.body.width, this.body.height);
-        thinking.size(this.body.width, this.body.height);
+        this.sprite.position(this.body.x - x_off, this.body.y - y_off, this.body.width, this.body.height);
+        this.sprite.size(this.body.width, this.body.height);
         
     }
   }
@@ -40,7 +44,9 @@ class Mob {
   		if(Rect.collision(this.body.rect, player.body.rect)){
   			player.hurt();
   		}
-  	});
+  	}, function(){
+        return clone(thinking);
+    });
   }
 
 }

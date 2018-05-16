@@ -32,11 +32,16 @@ Array.prototype.remove = function() {
 // The folder must contain exactly the amount of images specified and follow the naming convention frame<i>.<ext> 
 // where <i> is the index of the frame and <ext> is the file extension.
 // This function MUST be called within the preload fuinction in main.js or it will not work correctly.
-function img_list(folder, ext, c){
+/*function img_list(folder, ext, c){
     var images = [];
     for(i = 0; i < c; i ++){
         console.log("Loading asset img/" + folder + "/frame" + i + "." + ext);
         images.push(loadImage("img/" + folder + "/frame" + i + "." + ext));
     }
     return images;
-}
+}*/
+
+var clone = (function(){ 
+    return function (obj) { Clone.prototype=obj; return new Clone() };
+    function Clone(){}
+}());

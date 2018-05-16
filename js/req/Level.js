@@ -29,6 +29,7 @@ class Level {
       fill(wall.fallback_color.repr);
       rect(wall.x - this.x_off, wall.y, wall.width, wall.height);
     }
+    
     for(var j in this.mobs){
       if (!this.mobs.hasOwnProperty(j)) continue;
       var mob = this.mobs[j];
@@ -72,6 +73,21 @@ class Level {
       new Wall(2200, WINDOW_HEIGHT - 50, 25, 25, null, new Vector4D(0, 70, 255, 255)),
       ].concat([]), 
       new Vector2D(WINDOW_WIDTH * 0.4, 25), [], [
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+
+        Mob.spawn_thinking_mob(600, 100, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 300, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 220, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 230, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 240, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 250, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
+        Mob.spawn_thinking_mob(600, 200, 0.2, 4),
         Mob.spawn_thinking_mob(600, 200, 0.2, 4),
       ]);
   }
